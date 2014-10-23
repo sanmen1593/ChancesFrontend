@@ -1,0 +1,40 @@
+#container_chances{
+    padding-left: 20px;
+}
+body{
+    background: #FCFCFC;
+}
+#table_info{
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+}
+.navbar-default {
+    background-color: #2a7d4e;
+    border-color: #FCEBEB;
+    color: #fff;
+}
+.navbar-brand{
+    color: #fff;
+}
+#menu .navbar-header a, #menu ul li a {
+    color: #FAF6F6;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    color: #555;
+    background-color: #A9C0B8;
+}
+#menu .navbar-header a, #menu ul li ul li a {
+    color: #000000;
+}
+#table_people{
+    padding-top: 20px;
+}
+#title_home{
+    padding-bottom: 20px;
+}
+#search{
+    margin-left: 0px;
+    margin-top: 24px;
+}
