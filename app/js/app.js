@@ -14,19 +14,34 @@
         };
     });
 
-    app.controller('ChanceController', function(){
-        this.chance = {
-            id: "001",
-            free: " free",
-            date: "20/02/2014",
-            hour:"2:00",
-            destination:"utb",
-            departure :"manga",
-            description:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
-            rout: "pedro de heredia",
-            vehicle: [ 1,2,3 ]
 
-        };
+    app.directive('profileLeft', function() {
+        return {
+            restrict : 'E',
+            templateUrl: "../partials/profile-left.html"
+        }
+    });
+    app.directive('chances', function() {
+        return {
+            restrict : 'E',
+            templateUrl: "../partials/chances.html"
+        }
+    });
+    app.directive('mainMenu', function() {
+        return {
+            restrict : 'E',
+            templateUrl: "../partials/menu.html"
+        }
+    });
+
+    app.controller('ChanceController', function(){
+            this.chance={};
+            this.chances=[];
+            this.addChance = function () {
+                this.chances.push(this.chance);
+                this.chance = {};
+            };
+
     });
 
     app.controller('VechicleController', function(){
