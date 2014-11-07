@@ -7,19 +7,19 @@
         .directive('profileLeft', function() {
             return {
                 restrict : 'E',
-                templateUrl: "../partials/profile-left.html"
+                templateUrl: "partials/profile-left.html"
             }
         })
    .directive('chances', function() {
         return {
             restrict : 'E',
-            templateUrl: "../partials/chances.html"
+            templateUrl: "partials/chances.html"
         }
     })
    .directive('mainMenu', function() {
         return {
             restrict : 'E',
-            templateUrl: "../partials/menu.html"
+            templateUrl: "partials/menu.html"
         }
     });
 
