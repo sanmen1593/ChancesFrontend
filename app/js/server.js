@@ -1,3 +1,6 @@
+/*
+
+
 var express 	= require('express');
 var app 		= express();
 var chance 	= require('chance');
@@ -16,7 +19,7 @@ app.configure(function() {
     // Simula DELETE y PUT						
     app.use(express.methodOverride());					
 });
-/*
+
 // Escucha en el puerto 8080 y corre el server
 app.listen(8080, function() {
     console.log('App listening on port 8080');
