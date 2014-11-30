@@ -3,7 +3,7 @@
         'app.directives',
         'app.controllers'
     ]);
-
+	console.log('chanceApp module');
 
     app.config(['$routerProvider', function($routeProvider) {
 

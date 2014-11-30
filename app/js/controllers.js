@@ -1,26 +1,55 @@
 
 (function() {
-    var vehicleapp = angular.module('chanceApp', []);
-    vehicleapp.controller('VehicleController', function($scope, $http) {
+    var chanceApp = angular.module('chanceApp', []);
+    chanceApp.controller('VehicleController', function($scope, $http) {
 
-        $http.get('http://ing-sis.jairoesc.com/vehicle?auth-token=eyJpdiI6IlwvN0dnYmhFTVZxYm9LRnozQkdBZmV3PT0iLCJ2YWx1ZSI6IlN0eWQxMmY2b25nNm16TStaTXd4WGNcL29iVERlMVh3WGZJR3ErNTNJbWg4PSIsIm1hYyI6ImI3NDlhZGExNzZlMDdkZjEzNzFhN2M3MjdmYTA3N2Q0MzdlNDg1NzY2ZjYzYjJkNzZhNzYzNjUzOTljOWU4MGEifQ==')
+        $http.get('http://ing-sis.jairoesc.com/vehicle?auth-token=eyJpdiI6IlU1UVBMdVF6XC91eERBZHVScTIzSGN3PT0iLCJ2YWx1ZSI6ImRndlNLcUN0OTFtcWtYYW83T2l4SDBvZUdBc3ZcL1VCQ2pYbXVvS3NCdDV3PSIsIm1hYyI6IjgwZGMyNTc3MzA4NzUyMTk3YTI5ZDhmY2JjY2Q1NTRkMmI1ZjBjMTE3N2I0MGU2YTc1YzlmZTAwMzVkYTQyNWEifQ==')
                 //así enviamos los posts a la vista
                 .success(function(data) {
                     $scope.datos = data;
                     console.log(data);
                 })
-        .error(function(data) {
+                .error(function(data) {
 
-            console.log('Error' + data);
-        });
-        
-        
-        
-    });
+                    console.log('Error' + data);
+                });
 
+        // Cuando se añade un nuevo TODO, manda el texto a la API
+        $scope.save = function() {
+            $http.post('http://ing-sis.jairoesc.com/vehicle', $scope.vehicleData)
+                    .success(function(data) {
+                        var auth_token = 'eyJpdiI6IlU1UVBMdVF6XC91eERBZHVScTIzSGN3PT0iLCJ2YWx1ZSI6ImRndlNLcUN0OTFtcWtYYW83T2l4SDBvZUdBc3ZcL1VCQ2pYbXVvS3NCdDV3PSIsIm1hYyI6IjgwZGMyNTc3MzA4NzUyMTk3YTI5ZDhmY2JjY2Q1NTRkMmI1ZjBjMTE3N2I0MGU2YTc1YzlmZTAwMzVkYTQyNWEifQ==';
+                        $scope.vehicleData = {};
+                        $scope.datos = data + auth_token;
+                        //console.log(data+$token);
+                    })
+                    .error(function(data) {
+                        console.log('Error:' + data);
+                    });
+        };
 
+		// uso de filtros en por categoria 
+		$scope.filterCategory = 'vehicle';
+			$scope.setfilterCategory=function(category){
+			$scope.filterCategory=category;
+		}
+		
+    }),
+	
+	chanceApp.controller('MasterController', function($scope) {
+		$scope.categories = ['Chance','Vehicle','Friend'];
+		$scope.menus = [
+		{id:1,name:'Vehicle',url:'http://ing-sis.jairoesc.com/vehicle',menus:'Vehicle'},
+		{id:2,name:'Chance',url:'http://ing-sis.jairoesc.com/chance',menus:'Chance'},
+		{id:3,name:'Friend',url:'http://ing-sis.jairoesc.com/friend',menus:'Friend'}
+		];
+	});
 
+	 
 })();
+
+
+
 
 
 /*

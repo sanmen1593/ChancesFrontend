@@ -1,67 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chanceApp">
     <head lang="en">
         <meta charset="UTF-8">
-        <script src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/angular.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
+        <!--
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
-        <script src="../js/app.js"></script>
-        <script src="../js/directives/front-chance.js"></script>
-        <script src="../js/lib/angular-route.min.js"></script>
-        <script src="../js/controller/controller.js"></script>
+        -->
         <script type="text/javascript" src="../js/app.js"></script>
         <script type="text/javascript" src="../js/controllers.js"></script>
-
         <title>Vehicles</title>
     </head>
     <body>
-        <!-- menu principal de la app -->
-        <div class="container" ng-model="vehicleData.text">
-            <div class="col-md-9">
-                <div class="row" id="title_home">
-                    <div class="col-md-12">
-                        <h1>New Vehicles</h1>
-                    </div>
+        <div ng-controller="VehicleController as vehiclectrl">
+            <!-- menu principal de la app -->
+            <div class="container">
+				<header>
+				
+				</header>
+                <div class="col-md-9">
+                    <div class="row" id="title_home">
+					
+                        <div class="col-md-12">
+							<div ng-init="name='New Vehicles'" class="has-error">
+								<h1> {{name}}</h1>
+							</div>  
+                        </div>
 
-                    <div class="col-md-6">
-                        <label><h3> Plate</h3></label>
-                        <input type="text" class="form-control" placeholder="Plate">                       
-                    </div>
-                    <div class="col-md-6">
-                        <label><h3> Color</h3></label>
-                        <input type="text" class="form-control" placeholder="Color">                       
-                    </div>
-                    <div class="col-md-6">
-                        <label><h3> Model</h3></label>
-                        <input type="text" class="form-control" placeholder=" Model">                       
-                    </div>
-                    <div class="col-md-6">
-                        <label><h3>Capacity</h3></label>
-                        <input type="text" class="form-control" placeholder="Capacity">                       
-                    </div>
-                    <div class="col-md-6">
-                        <label> <h3> Type</h3></label>
-                        <input type="text" class="form-control" placeholder="Type">                       
-                    </div>
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label><h3>Picture</h3></label>
-                            <input type="file" id="exampleInputFile">
-                        </div>                       
-                    </div>
-                    <div id="container_vehicles">
                         <div class="col-md-6">
-                            <p>
-                                <button type="button" class="btn btn-primary btn-lg" ng-click="store()">submit</button>
-                                <button type="button" class="btn btn-default btn-lg">reset</button>
-                            </p>
+							<div ng-init="plate='Plate'">
+								<label><h3>{{plate}} </h3></label>
+								<input name="plate"id="plate" type="text" class="form-control" placeholder="plate">
+							</div>							
+                        </div>
+                        <div class="col-md-6">
+							<div ng-init="color='Color'">
+								<label><h3>{{color}} </h3></label>
+								<input type="text" name="type" id="type" class="form-control" placeholder="color">   
+							</div>
+                        </div>
+                        <div class="col-md-6">
+							<div ng-init="model='Model'">
+								<label><h3> {{model}}</h3></label>
+								<input type="text" name="model" di="model" class="form-control" placeholder=" model">                       
+							</div>
+						</div>
+                        <div class="col-md-6">
+							<div ng-init="capacity='Capacity'">
+								<label><h3>{{capacity}}</h3></label>
+								<input type="text" name="capacity" id="capacity" class="form-control" placeholder="capacity">                       
+							</div>
+						</div>
+                        <div class="col-md-6">
+							<div ng-init="type='Type'">
+								<label> <h3> {{type}}</h3></label>
+								<input type="text" class="form-control" name="type" id="type" placeholder="type">                       
+							</div>
+						</div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+								<div ng-init="picture='Picture'">
+									<label><h3>{{picture}}</h3></label>
+									<input type="file" id="exampleInputFile">
+								</div> 
+							</div>                       
+                        </div>
+                        <div id="container_vehicles">
+                            <div class="col-md-6">
+                                <p>
+									<div ng-init="button='button'">
+										<button type="button" class="btn btn-primary btn-lg" ng-click="save()">submit</button>
+									</div>
+									<div ng-init="button='reset'">
+										<button type="button" class="btn btn-default btn-lg">reset</button>
+									</div>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+				<footer>
+		
+				</footer>
             </div>
         </div>
     </body>
