@@ -2,8 +2,8 @@
 (function() {
     var chanceApp = angular.module('chanceApp', []);
     chanceApp.controller('VehicleController', function($scope, $http) {
-
-        $http.get('http://ing-sis.jairoesc.com/vehicle?auth-token=eyJpdiI6IlU1UVBMdVF6XC91eERBZHVScTIzSGN3PT0iLCJ2YWx1ZSI6ImRndlNLcUN0OTFtcWtYYW83T2l4SDBvZUdBc3ZcL1VCQ2pYbXVvS3NCdDV3PSIsIm1hYyI6IjgwZGMyNTc3MzA4NzUyMTk3YTI5ZDhmY2JjY2Q1NTRkMmI1ZjBjMTE3N2I0MGU2YTc1YzlmZTAwMzVkYTQyNWEifQ==')
+		var urlApp='http://ing-sis.jairoesc.com/', authToken='eyJpdiI6IlU1UVBMdVF6XC91eERBZHVScTIzSGN3PT0iLCJ2YWx1ZSI6ImRndlNLcUN0OTFtcWtYYW83T2l4SDBvZUdBc3ZcL1VCQ2pYbXVvS3NCdDV3PSIsIm1hYyI6IjgwZGMyNTc3MzA4NzUyMTk3YTI5ZDhmY2JjY2Q1NTRkMmI1ZjBjMTE3N2I0MGU2YTc1YzlmZTAwMzVkYTQyNWEifQ==';
+		$http.get(urlApp + 'vehicle?auth-token=' + authToken)  
                 //así enviamos los posts a la vista
                 .success(function(data) {
                     $scope.datos = data;
@@ -16,23 +16,18 @@
 
         // Cuando se añade un nuevo TODO, manda el texto a la API
         $scope.save = function() {
-            $http.post('http://ing-sis.jairoesc.com/vehicle', $scope.vehicleData)
-                    .success(function(data) {
-                        var auth_token = 'eyJpdiI6IlU1UVBMdVF6XC91eERBZHVScTIzSGN3PT0iLCJ2YWx1ZSI6ImRndlNLcUN0OTFtcWtYYW83T2l4SDBvZUdBc3ZcL1VCQ2pYbXVvS3NCdDV3PSIsIm1hYyI6IjgwZGMyNTc3MzA4NzUyMTk3YTI5ZDhmY2JjY2Q1NTRkMmI1ZjBjMTE3N2I0MGU2YTc1YzlmZTAwMzVkYTQyNWEifQ==';
-                        $scope.vehicleData = {};
-                        $scope.datos = data + auth_token;
-                        //console.log(data+$token);
+            $http.post(urlApp + 'vehicle?auth-token=' + authToken, $scope.vehicleData)
+                    .success(function(data) { 
+                        $scope.vehicleData = vehicleData();
+                        $scope.datos = data ;						
+                        console.log(data);
                     })
+				
                     .error(function(data) {
                         console.log('Error:' + data);
                     });
         };
 
-		// uso de filtros en por categoria 
-		$scope.filterCategory = 'vehicle';
-			$scope.setfilterCategory=function(category){
-			$scope.filterCategory=category;
-		}
 		
     }),
 	

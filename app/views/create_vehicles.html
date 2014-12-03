@@ -30,42 +30,48 @@
 								<h1> {{name}}</h1>
 							</div>  
                         </div>
-
-                        <div class="col-md-6">
+						
+							<div class="col-md-6">
 							<div ng-init="plate='Plate'">
 								<label><h3>{{plate}} </h3></label>
-								<input name="plate"id="plate" type="text" class="form-control" placeholder="plate">
+								<input name="plate"id="plate" ng-model="save.plate" type="text" class="form-control" placeholder="plate">
 							</div>							
                         </div>
                         <div class="col-md-6">
 							<div ng-init="color='Color'">
 								<label><h3>{{color}} </h3></label>
-								<input type="text" name="type" id="type" class="form-control" placeholder="color">   
+								<input type="text"  ng-model="save.color" name="type" id="type" class="form-control" placeholder="color">   
 							</div>
                         </div>
-                        <div class="col-md-6">
+						  <div class="col-md-6">
 							<div ng-init="model='Model'">
 								<label><h3> {{model}}</h3></label>
-								<input type="text" name="model" di="model" class="form-control" placeholder=" model">                       
+								<input type="text"  ng-model="save.model" name="model" di="model" class="form-control" placeholder=" model">                       
+							</div>
+						</div>
+                        <div class="col-md-6">
+							<div ng-init="brand='Brand'">
+								<label><h3> {{brand}}</h3></label>
+								<input type="text"  ng-model="save.brand" name="brand" di="brand" class="form-control" placeholder=" rand">                       
 							</div>
 						</div>
                         <div class="col-md-6">
 							<div ng-init="capacity='Capacity'">
 								<label><h3>{{capacity}}</h3></label>
-								<input type="text" name="capacity" id="capacity" class="form-control" placeholder="capacity">                       
+								<input type="text" ng-model="save.capacity"  name="capacity" id="capacity" class="form-control" placeholder="capacity">                       
 							</div>
 						</div>
                         <div class="col-md-6">
 							<div ng-init="type='Type'">
 								<label> <h3> {{type}}</h3></label>
-								<input type="text" class="form-control" name="type" id="type" placeholder="type">                       
+								<input type="text"  ng-model="save.type" class="form-control" name="type" id="type" placeholder="type">                       
 							</div>
 						</div>
                         <div class="col-md-6">
                             <div class="form-group">
 								<div ng-init="picture='Picture'">
 									<label><h3>{{picture}}</h3></label>
-									<input type="file" id="exampleInputFile">
+									<input type="file"  ng-model="save." id="exampleInputFile">
 								</div> 
 							</div>                       
                         </div>
@@ -80,7 +86,8 @@
 									</div>
                                 </p>
                             </div>
-                        </div>
+                        </div>	
+										
                     </div>
                 </div>
 				<footer>

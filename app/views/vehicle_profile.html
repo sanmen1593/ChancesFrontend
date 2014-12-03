@@ -39,8 +39,8 @@
                 <div class="col-md-9">
                     <div id="container_chances">
                         <div class="row">
-                            <div  ng-repeat="dato in datos" class="data">
-                                <div id="table_info" ng-click="load_vehicle()">
+                            <div  ng-repeat="dato in datos" class="data" ng-class={active: isCurrentData(dato)}>
+                                <div id="table_info">
                                     <div class="media">
                                         <div class="col-md-12">
                                             <div class="media-body">												
