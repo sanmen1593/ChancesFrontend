@@ -10,3 +10,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: "views/vehiclelist.html"
         }).otherwise({reditrectTo: "/login"});
     }]);
+
+app.value('settings', {
+    auth_token: ''
+});
