@@ -1,0 +1,17 @@
+<div class="container" ng-controller="VehicleListController">
+    <div class="row">
+        <div ng-repeat="vehicle in vehicles.vehicle" class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>{{ vehicle.brand}} {{vehicle.model}} {{ "#"+ vehicle.id}}</h2>
+                </div>
+                <div class="panel-body">
+                    {{ vehicle.plate }} {{vehicle.capacity }}
+                </div>
+                <div class="panel-footer">
+                    Si has olvidado tu contraseña, haz clic <a href="">aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

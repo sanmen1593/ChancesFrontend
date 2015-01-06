@@ -1,0 +1,1 @@
+var vehicles = angular.module('vehicles', ['vehicles.controllers']);
