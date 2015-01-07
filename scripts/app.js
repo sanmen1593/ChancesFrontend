@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'sessions', 'vehicles']);
+var app = angular.module('app', ['ngRoute', 'sessions', 'vehicles', 'ngCookies']);
 
 app.config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when("/", {
@@ -6,11 +6,11 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/login', {
             templateUrl: "views/login.html",
             controller: "SessionsController"
-        }).when('/vehiclelist',{
+        }).when('/myvehicles', {
             templateUrl: "views/vehiclelist.html"
-        }).otherwise({reditrectTo: "/login"});
+        });
+    }]).run(['$location', '$cookieStore', function ($location, $cookieStore) {
+        if ($cookieStore.get('auth_token') != null) {
+            $location.path('/myvehicles');
+        }
     }]);
-
-app.value('settings', {
-    auth_token: ''
-});

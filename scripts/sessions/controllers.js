@@ -1,6 +1,7 @@
 var controllers = angular.module('sessions.controllers', []);
 
-controllers.controller('SessionsController', ['$scope', '$http', '$rootScope', '$location', 'settings', function ($scope, $http, $rootScope, $location, settings) {
+controllers.controller('SessionsController', ['$scope', '$http', '$location', '$cookieStore',
+    function ($scope, $http, $location, $cookieStore) {
         $scope.formData = {};
         $scope.processForm = function () {
             var forminfo = "email=" + $scope.formData.email + "&password=" + $scope.formData.password;
@@ -10,9 +11,9 @@ controllers.controller('SessionsController', ['$scope', '$http', '$rootScope', '
                 data: forminfo, // pass in data as strings
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                settings.auth_token = data.auth_token;
+                $cookieStore.put('auth_token', data.auth_token);
                 $scope.messageok = data;
-                $location.path("/vehiclelist");
+                $location.path("/myvehicles");
             }).error(function (data, status, headers, config) {
                 $scope.messageerror = status;
             });
