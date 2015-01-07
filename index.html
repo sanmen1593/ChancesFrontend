@@ -19,23 +19,39 @@
         <script type="text/javascript" src="scripts/vehicles/config.js"></script>
         <script type="text/javascript" src="scripts/sessions/controllers.js"></script>
         <script type="text/javascript" src="scripts/sessions/config.js"></script>
-        <script type="text/javascript" src="scripts/filters.js"></script>
         <script type="text/javascript" src="scripts/app.js"></script>
     </head>
     <body>
         <header>
-            <div id="header" class="page-header">  
-                <nav class="navbar navbar-default" ng-controller="UserInfoController">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#/profile">{{ user.user.name }} {{user.user.lastname }}</a></li>
-                        <li ng-controller="SessionsController"><button ng-hide="{{!logged()}}" ng-click='logout()' class="btn btn-default navbar-btn">Logout </button></li>
-                        <li><a></a></li>
-                    </ul>
-                </nav>
+            <div id="header" class="page-header"> 
+                <div id="navcontainer" class="container-fluid">
+                    <div id="row">
+                        <div class="bs-example" data-example-id="navbar-link">
+                            <nav class="navbar navbar-default">
+                                <div class="container-fluid" ng-controller="SessionsController">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <p ng-hide="{{!logged()}}" class="navbar-text" ng-controller="UserInfoController">
+                                            Signed in as: <a href="#/profile" id="profilelink" class="navbar-link">{{ user.user.name}} {{user.user.lastname}}</a>
+                                        </p>
+                                    </div>
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                                        <p class="navbar-right" ><button ng-hide="{{!logged()}}" ng-click='logout()' class="btn btn-default navbar-btn">Logout </button></p>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-5 col-xs-offset-2">
-                            <h1><a href="#/">ChanceUTB</a></h1>
+                        <div class="col-xs-12 col-sm-5 col-sm-offset-2">
+                            <h1><a href="#/myvehicles">ChanceUTB</a></h1>
                         </div>
                         <div class="col-sm-5 hidden-xs">
                             <a href="http://www.unitecnologica.edu.co"><img src="scripts/vendor/imgs/logo_utb.png" alt="Universidad Tecnologica de Bolivar" title="Universidad Tecnologica de Bolivar" /></a>

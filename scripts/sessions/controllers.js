@@ -11,10 +11,16 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
                 data: forminfo, // pass in data as strings
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                $cookieStore.put('auth_token', data.auth_token);
-                $scope.messageok = data;
-                $location.path('/myvehicles');
-                location.reload();
+                if (data.auth_token == null) {
+                    $scope.autherror = 'Error de autenticación.';
+                    $scope.formData.email = null;
+                    $scope.formData.password = null;
+                } else {
+                    $cookieStore.put('auth_token', data.auth_token);
+                    $scope.messageok = data;
+                    $location.path('/myvehicles');
+                    location.reload();
+                }
             }).error(function (data, status, headers, config) {
                 console.log(data);
             });
@@ -25,11 +31,11 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
             $location.path('/login');
             location.reload();
         };
-        
-        $scope.logged = function(){
-            if($cookieStore.get('auth_token') != null){
+
+        $scope.logged = function () {
+            if ($cookieStore.get('auth_token') != null) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         };

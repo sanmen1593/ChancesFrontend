@@ -19,3 +19,20 @@ body {
 #header{
     margin-top: 0px;
 }
+
+#navcontainer{
+    padding:0;
+}
+
+#navmenu{
+    width: 100%;
+}
+
+#profilelink{
+    color: blue;
+}
+
+#messagerror{
+    color: red;
+    font-weight: bold;
+}
