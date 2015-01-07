@@ -23,5 +23,14 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
         $scope.logout = function () {
             $cookieStore.remove('auth_token');
             $location.path('/login');
+            location.reload();
+        };
+        
+        $scope.logged = function(){
+            if($cookieStore.get('auth_token') != null){
+                return true;
+            }else{
+                return false;
+            }
         };
     }]);
