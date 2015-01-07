@@ -1,9 +1,10 @@
 var controllers = angular.module('sessions.controllers', []);
 
-controllers.controller('SessionsController', ['$scope', '$http', '$location', '$cookieStore',
-    function ($scope, $http, $location, $cookieStore) {
+controllers.controller('SessionsController', ['$scope', '$http', '$location', '$cookieStore', '$route',
+    function ($scope, $http, $location, $cookieStore, $route) {
         $scope.formData = {};
-        $scope.processForm = function () {
+        $scope.login = function () {
+
             var forminfo = "email=" + $scope.formData.email + "&password=" + $scope.formData.password;
             $http({
                 method: 'POST',
@@ -14,8 +15,13 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
                 $cookieStore.put('auth_token', data.auth_token);
                 $scope.messageok = data;
                 $location.path("/myvehicles");
+                location.reload();
             }).error(function (data, status, headers, config) {
-                $scope.messageerror = status;
+                console.log(data);
             });
+        };
+
+        $scope.logout = function () {
+
         };
     }]);

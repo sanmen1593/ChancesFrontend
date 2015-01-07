@@ -2,7 +2,7 @@ var controllers = angular.module('vehicles.controllers', []);
 
 controllers.controller('VehicleListController', ['$scope', '$http', '$location', '$cookieStore',
     function ($scope, $http, $location, $cookieStore) {
-        if ($cookieStore.get('auth_token') === '') {
+        if ($cookieStore.get('auth_token') == null) {
             $location.path("/");
         } else {
             $http({

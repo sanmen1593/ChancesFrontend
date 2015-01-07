@@ -12,6 +12,9 @@
         <script type="text/javascript" src="scripts/vendor/angular/angular-route.min.js.map"></script>        
         <script type="text/javascript" src="scripts/vendor/angular/angular-cookies.min.js"></script>
         <script type="text/javascript" src="scripts/vendor/angular/angular-cookies.min.js.map"></script>        
+        <script type="text/javascript" src="scripts/users/services.js"></script>
+        <script type="text/javascript" src="scripts/users/controllers.js"></script>
+        <script type="text/javascript" src="scripts/users/config.js"></script>
         <script type="text/javascript" src="scripts/vehicles/controllers.js"></script>
         <script type="text/javascript" src="scripts/vehicles/config.js"></script>
         <script type="text/javascript" src="scripts/sessions/controllers.js"></script>
@@ -20,7 +23,14 @@
     </head>
     <body>
         <header>
-            <div class="page-header">
+            <div id="header" class="page-header">  
+                <nav class="navbar navbar-default" ng-controller="UserInfoController">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">{{ user.user.name }} {{user.user.lastname }}</a></li>
+                        <li><a href="">Logout </a></li>
+                        <li><a></a></li>
+                    </ul>
+                </nav>
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-5 col-xs-offset-2">
