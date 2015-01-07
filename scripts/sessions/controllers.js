@@ -4,7 +4,6 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
     function ($scope, $http, $location, $cookieStore, $route) {
         $scope.formData = {};
         $scope.login = function () {
-
             var forminfo = "email=" + $scope.formData.email + "&password=" + $scope.formData.password;
             $http({
                 method: 'POST',
@@ -14,7 +13,7 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
             }).success(function (data) {
                 $cookieStore.put('auth_token', data.auth_token);
                 $scope.messageok = data;
-                $location.path("/myvehicles");
+                $location.path('/myvehicles');
                 location.reload();
             }).error(function (data, status, headers, config) {
                 console.log(data);
@@ -22,6 +21,7 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
         };
 
         $scope.logout = function () {
-
+            $cookieStore.remove('auth_token');
+            $location.path('/login');
         };
     }]);

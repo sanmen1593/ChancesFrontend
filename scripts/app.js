@@ -8,9 +8,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: "SessionsController"
         }).when('/myvehicles', {
             templateUrl: "views/vehiclelist.html"
-        });/*.when('/',{
-            templateUrl: ""
-        });*/
+        }).when('/profile',{
+            templateUrl: "views/profile.html"
+        });
     }]).run(['$location', '$cookieStore', function ($location, $cookieStore) {
         if ($cookieStore.get('auth_token') != null) {
             $location.path('/myvehicles');
