@@ -7,13 +7,17 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: "views/login.html",
             controller: "SessionsController"
         }).when('/myvehicles', {
-            templateUrl: "views/vehiclelist.html"
+            templateUrl: "views/vehiclelist.html",
+            controller: "VehicleController"
         }).when('/profile',{
             templateUrl: "views/profile.html",
             controller: "UserController"
         }).when('/signup', {
             templateUrl: "views/signup.html",
             controller: "UserController"
+        }).when('/newvehicle', {
+            templateUrl: "views/createvehicle.html",
+            controller: "VehicleController"
         });
     }]).run(['$location', '$cookieStore', function ($location, $cookieStore) {
         if ($cookieStore.get('auth_token') != null && $location.path() == '/login') {

@@ -3,11 +3,6 @@ var controllers = angular.module('sessions.controllers', []);
 controllers.controller('SessionsController', ['$scope', '$http', '$location', '$cookieStore', '$route',
     function ($scope, $http, $location, $cookieStore, $route) {
         $scope.formData = {};
-        //Si está logueado, redirigir de la pag principal o del login a /myvehicles
-        if ($cookieStore.get('auth_token') != null && ($location.path() == '/' || $location.path('#/login'))) {
-            $location.path('/myvehicles');
-        }
-
         $scope.login = function () {
             var forminfo = "email=" + $scope.formData.email + "&password=" + $scope.formData.password;
             $http({

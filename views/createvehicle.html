@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2>Registrarse</h2>
+                </div>
+                <div class="panel-body">
+                    <form role="form" class="form" ng-submit="registerVehicle()">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Placa:</label>
+                                <input type="text" id="plate" name="plate" pattern="([A-Za-z][A-Za-z][A-Za-z][0-9][0-9][0-9]|[A-Za-z][A-Za-z][0-9][0-9][0-9][A-Za-z])" required class="form-control" ng-model="formData.plate" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Color: </label>
+                                <input type="text" id="color" name="color" required class="form-control" ng-model="formData.color" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Marca:</label>
+                                <input type="text" id="brand" name="brand" required class="form-control" ng-model="formData.brand" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Modelo:</label>
+                                <input type="text" id="model" required name="model" class="form-control" ng-model="formData.model" />
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Capacidad:</label>
+                                <input type="number" id="capacity" required name="capacity" class="form-control" ng-model="formData.capacity"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Tipo:</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="tipovehicle" value="1" ng-model="formData.carro"> Carro
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="tipovehicle" value="2" ng-model="formData.moto"> Moto
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="tipovehicle" value="3" ng-model="formData.otro"> Otro
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <input type="submit" id="submit" name="submit" class="btn btn-success"/>
+                            </div>
+                        </div>  
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    ¿Estás registrado? Haz clic <a href="#/login">aquí</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
