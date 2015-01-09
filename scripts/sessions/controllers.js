@@ -21,8 +21,7 @@ controllers.controller('SessionsController', ['$scope', '$http', '$location', '$
                     $scope.formData.email = null;
                     $scope.formData.password = null;
                 } else {
-                    $.cookie('auth_token', '"'+data.auth_token+'"', {expire: 4.5 * 60 * 1000 , path: '/ChancesFrontend'});
-                    $cookieStore.put('auth_token2', data.auth_token);
+                    $cookieStore.put('auth_token', data.auth_token);
                     $scope.messageok = data;
                     $location.path('/myvehicles');
                     location.reload();
