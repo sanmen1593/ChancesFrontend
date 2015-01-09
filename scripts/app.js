@@ -9,10 +9,17 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/myvehicles', {
             templateUrl: "views/vehiclelist.html"
         }).when('/profile',{
-            templateUrl: "views/profile.html"
+            templateUrl: "views/profile.html",
+            controller: "UserController"
+        }).when('/signup', {
+            templateUrl: "views/signup.html",
+            controller: "UserController"
         });
     }]).run(['$location', '$cookieStore', function ($location, $cookieStore) {
         if ($cookieStore.get('auth_token') != null && $location.path() == '/login') {
             $location.path('/myvehicles');
+        }
+        if($cookieStore.get('auth_token') == null && ($location.path() != '/signup')){
+            $location.path('/login');
         }
     }]);
