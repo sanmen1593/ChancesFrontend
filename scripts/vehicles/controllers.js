@@ -1,21 +1,20 @@
 var controllers = angular.module('vehicles.controllers', []);
 
-controllers.controller('VehicleController', ['$scope', '$http', '$location', '$cookieStore', 'VehiclesInfoService',
-    function ($scope, $http, $location, $cookieStore, VehiclesInfoService) {
+controllers.controller('VehicleController', ['$scope', '$location', '$cookieStore', 'Request',
+    function ($scope, $location, $cookieStore, Request) {
 
         $scope.getVehicles = function () {
             if ($cookieStore.get('auth_token') == null) {
                 $location.path("/");
             } else {
-                $http({
-                    method: 'GET',
-                    url: 'http://ing-sis.jairoesc.com/vehicle?auth-token=' + $cookieStore.get('auth_token'),
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    $scope.vehicles = data;
-                }).error(function (data, status, headers, config) {
-                    $scope.messageerror = status;
-                });
+                url = 'http://ing-sis.jairoesc.com/vehicle?auth-token=' + $cookieStore.get('auth_token');
+                var promise = Request.get(url)
+                        .then(function (response) {
+                            $scope.vehicles = response;
+                        }, function (error) {
+                            console.log(error);
+                        }
+                        );
             }
         };
         $scope.formData = {};

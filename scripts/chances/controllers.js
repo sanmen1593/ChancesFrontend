@@ -1,13 +1,12 @@
 var controllers = angular.module('chances.controllers', []);
 
 controllers.controller('ChancesController', ['$scope', 'Request', '$cookieStore',
-    function ($scope, request, $cookieStore) {
+    function ($scope, Request, $cookieStore) {
         $scope.getChances = function () {
             var url = 'http://ing-sis.jairoesc.com/chanceslist?auth-token=';
             if ($cookieStore.get('auth_token') != null) {
-                var promise = request.get(url + $cookieStore.get('auth_token'))
+                var promise = Request.get(url + $cookieStore.get('auth_token'))
                         .then(function (response) {
-                            console.log(response);
                             $scope.chances = response;
                         }, function (error) {
                             console.log(error);

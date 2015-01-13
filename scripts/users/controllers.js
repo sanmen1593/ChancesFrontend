@@ -1,13 +1,13 @@
 var controllers = angular.module('users.controllers', []);
 
-controllers.controller('UserController', ['$scope', '$location', '$cookieStore', 'UserInfoService', '$http',
-    function ($scope, $location, $cookieStore, UserInfoService, $http) {
+controllers.controller('UserController', ['$scope', '$location', '$cookieStore', 'Request',
+    function ($scope, $location, $cookieStore, Request) {
         $scope.user = {};
 
         $scope.getUserInfo = function () {
             var url = 'http://ing-sis.jairoesc.com/user?auth-token=';
             if ($cookieStore.get('auth_token') != null) {
-                var promise = UserInfoService.get(url + $cookieStore.get('auth_token'))
+                var promise = Request.get(url + $cookieStore.get('auth_token'))
                         .then(function (response) {
                             $scope.user = response;
                         }, function (error) {
@@ -28,7 +28,7 @@ controllers.controller('UserController', ['$scope', '$location', '$cookieStore',
                     "&email_confirmation=" + $scope.formData.email_confirmation +
                     "&password=" + $scope.formData.password;
             var url = 'http://ing-sis.jairoesc.com/signup'
-            var promise = UserInfoService.post(url, params)
+            var promise = Request.post(url, params)
                     .then(function (response) {
                         alert(response.data);
                         $location.path('/login');

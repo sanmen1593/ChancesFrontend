@@ -1,1 +1,1 @@
-var vehicles = angular.module('vehicles', ['vehicles.controllers', 'vehicles.services']);
+var vehicles = angular.module('vehicles', ['vehicles.controllers']);

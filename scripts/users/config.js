@@ -1,1 +1,1 @@
-var users = angular.module('users', ['users.controllers', 'user.services']);
+var users = angular.module('users', ['users.controllers']);
