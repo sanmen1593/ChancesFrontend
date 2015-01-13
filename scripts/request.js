@@ -1,6 +1,6 @@
-var services = angular.module('user.services', []);
+var services = angular.module('request', []);
 
-services.factory("UserInfoService", ['$http', '$q', function ($http, $q) {
+services.factory("Request", ['$http', '$q', function ($http, $q) {
         return {
             get: function (url) {
                 return $http.get(url).then(function (response) {
@@ -35,5 +35,4 @@ services.factory("UserInfoService", ['$http', '$q', function ($http, $q) {
                 });
             }
         };
-        //return $resource(url, {}, {get: {method: "GET", isArray: false}});
     }]);

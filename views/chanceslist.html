@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div ng-repeat="chance in chances.chances" class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2>De {{chance.departure}} a {{ chance.destination}}</h2>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Fecha: {{ chance.date}}
+                    </p>
+                    <p>
+                        Precio: {{ chance.fee}}
+                    </p>
+                    <p>
+                        Hora: {{ chance.hour}}
+                    </p>
+                    <p>
+                        Cupos: {{ chance.capacity}}
+                    </p>
+                    <p>
+                        Ruta: {{ chance.route | RouteFilter }}
+                    </p>
+                    <p>
+                        Comentarios: {{chance.comments}}
+                    </p>
+                </div>
+                <div class="panel-footer">
+                    ¿Quieres tomar este chance?
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

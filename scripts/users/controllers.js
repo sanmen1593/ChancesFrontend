@@ -22,14 +22,11 @@ controllers.controller('UserController', ['$scope', '$location', '$cookieStore',
             if ($scope.formData.email != $scope.formData.email_confirmation) {
                 $scope.emailerror = "Los emails deben ser iguales";
             }
-
-
             var params = "name=" + $scope.formData.name +
                     "&lastname=" + $scope.formData.lastname +
                     "&email=" + $scope.formData.email +
                     "&email_confirmation=" + $scope.formData.email_confirmation +
                     "&password=" + $scope.formData.password;
-            
             var url = 'http://ing-sis.jairoesc.com/signup'
             var promise = UserInfoService.post(url, params)
                     .then(function (response) {

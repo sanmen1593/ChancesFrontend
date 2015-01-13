@@ -1,0 +1,1 @@
+var chances = angular.module('chances', ['chances.controllers']);
