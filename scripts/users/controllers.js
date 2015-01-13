@@ -22,29 +22,27 @@ controllers.controller('UserController', ['$scope', '$location', '$cookieStore',
             if ($scope.formData.email != $scope.formData.email_confirmation) {
                 $scope.emailerror = "Los emails deben ser iguales";
             }
-            
-            
+
+
             var params = "name=" + $scope.formData.name +
                     "&lastname=" + $scope.formData.lastname +
                     "&email=" + $scope.formData.email +
                     "&email_confirmation=" + $scope.formData.email_confirmation +
                     "&password=" + $scope.formData.password;
-            console.log(params);
-            $http({
-                method: 'POST',
-                url: 'http://ing-sis.jairoesc.com/signup',
-                data: params, // pass in data as strings
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            }).success(function (data) {
-                console.log(data);
-                $scope.messageok = data;
-                alert(data);
-                $location.path('/login');
-                location.reload();
-            }).error(function (data, status, headers, config) {
-                console.log(data);
-            });
+            
+            var url = 'http://ing-sis.jairoesc.com/signup'
+            var promise = UserInfoService.post(url, params)
+                    .then(function (response) {
+                        alert(response.data);
+                        $location.path('/login');
+                        location.reload();
+                    }, function (error) {
+                        console.log(error);
+                    }
+                    );
         };
+
+
 
         $scope.getUserInfo();
     }]);
