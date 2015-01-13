@@ -1,7 +1,7 @@
 var controllers = angular.module('vehicles.controllers', []);
 
-controllers.controller('VehicleController', ['$scope', '$http', '$location', '$cookieStore',
-    function ($scope, $http, $location, $cookieStore) {
+controllers.controller('VehicleController', ['$scope', '$http', '$location', '$cookieStore', 'VehiclesInfoService',
+    function ($scope, $http, $location, $cookieStore, VehiclesInfoService) {
 
         $scope.getVehicles = function () {
             if ($cookieStore.get('auth_token') == null) {
@@ -19,16 +19,38 @@ controllers.controller('VehicleController', ['$scope', '$http', '$location', '$c
             }
         };
         $scope.formData = {};
-        $scope.registerVehicle = function(){
-            if($scope.formData.carro != 'undefined'){
+        $scope.registerVehicle = function () {
+            if ($scope.formData.carro != 'undefined') {
                 $scope.formData.type = $scope.formData.carro;
-            }else if($scope.formData.moto != 'undefined'){
+            } else if ($scope.formData.moto != 'undefined') {
                 $scope.formData.type = $scope.formData.moto;
-            }else if($scope.formData.otro != 'undefined'){
+            } else if ($scope.formData.otro != 'undefined') {
                 $scope.formData.type = $scope.formData.otro;
+            } else {
+                $scope.errortype = "Tipo de vehiculo invalido";
             }
-            var params = "plate="+$scope.formData.plate+"&color=";
+            var params = "plate=" + $scope.formData.plate +
+                    "&color=" + $scope.formData.color +
+                    "&brand=" + $scope.formData.brand +
+                    "&model=" + $scope.formData.model +
+                    "&capacity=" + $scope.formData.capacity +
+                    "&type=" + $scope.formData.type;
+
+            var url = "http://ing-sis.jairoesc.com/vehicle?auth-token=" + $cookieStore.get('auth_token');
+
+            $http({
+                method: 'POST',
+                url: url,
+                data: params, // pass in data as strings
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                console.log(data);
+                $location.path('/myvehicles');
+                location.reload();
+            }).error(function (data, status, headers, config) {
+                console.log(data);
+            });
         };
-        
+
         $scope.getVehicles();
     }]);
