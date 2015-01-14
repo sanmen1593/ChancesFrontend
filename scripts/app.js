@@ -21,6 +21,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         }).when('/chances',{
             templateUrl: "views/chanceslist.html",
             controller: "ChancesController"
+        }).when('/newchance',{
+            templateUrl: "views/createchance.html",
+            controller: "ChancesController"
         });
     }]).run(['$location', '$cookieStore', function ($location, $cookieStore) {
         if ($cookieStore.get('auth_token') != null && $location.path() == '/login') {

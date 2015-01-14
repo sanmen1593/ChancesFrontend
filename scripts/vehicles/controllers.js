@@ -43,7 +43,7 @@ controllers.controller('VehicleController', ['$scope', '$location', '$cookieStor
                 data: params, // pass in data as strings
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             }).success(function (data) {
-                console.log(data);
+                alert(data.message);
                 $location.path('/myvehicles');
                 location.reload();
             }).error(function (data, status, headers, config) {

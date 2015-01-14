@@ -1,7 +1,8 @@
 var controllers = angular.module('chances.controllers', []);
 
-controllers.controller('ChancesController', ['$scope', 'Request', '$cookieStore',
-    function ($scope, Request, $cookieStore) {
+controllers.controller('ChancesController', ['$scope', 'Request', '$cookieStore', '$rootScope','$http','$location',
+    function ($scope, Request, $cookieStore, $rootScope,$http, $location) {
+        $scope.formData = {};
         $scope.getChances = function () {
             var url = 'http://ing-sis.jairoesc.com/chanceslist?auth-token=';
             if ($cookieStore.get('auth_token') != null) {
@@ -16,26 +17,49 @@ controllers.controller('ChancesController', ['$scope', 'Request', '$cookieStore'
         };
 
         $scope.newChance = function () {
+            $scope.formData.date = $scope.formData.year + '-' + $scope.formData.month + '-' + $scope.formData.day;
+            $scope.formData.vehicles_id = $scope.selectedvehicle.id;
 
+            var params = "departure=" + $scope.formData.departure +
+                    "&destination=" + $scope.formData.destination +
+                    "&date=" + $scope.formData.date +
+                    "&fee=" + $scope.formData.fee +
+                    "&hour=" + $scope.formData.hour +
+                    "&comments=" + $scope.formData.comments +
+                    "&route=" + $scope.formData.route +
+                    "&capacity=" + $scope.formData.capacity +
+                    "&vehicles_id=" + $scope.formData.vehicles_id;
+            
+            var url = "http://ing-sis.jairoesc.com/chance?auth-token=" + $cookieStore.get('auth_token');
+
+            $http({
+                method: 'POST',
+                url: url,
+                data: params,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                alert(data);
+                $location.path('/chances');
+                location.reload();
+            }).error(function (data, status, headers, config) {
+                console.log(data);
+            });
         };
-
         $scope.getChances();
     }]);
 
 controllers.filter('RouteFilter', function () {
     return function (route) {
         if (route == 1) {
-            return 'Avenida'; // this will be listed in the results
-        }
-        if (route == 2) {
+            return 'Avenida';
+        } else if (route == 2) {
             return 'Mamonal';
-        }
-        if (route == 3) {
+        } else if (route == 3) {
             return 'Bosque';
-        }
-        if (route == 4) {
+        } else if (route == 4) {
             return 'Otros';
+        } else {
+            return "No hay ruta";
         }
-        return "No hay ruta";
     };
 });
