@@ -36,3 +36,11 @@ body {
     color: red;
     font-weight: bold;
 }
+
+.white-text{
+    color: white;
+}
+
+.chances-title, .capitalize{
+    text-transform: capitalize;
+}

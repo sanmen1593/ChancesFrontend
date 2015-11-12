@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <div class="panel panel-success">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h2>Registrar Vehículo</h2>
                 </div>
@@ -40,32 +40,26 @@
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
                                 <label>Tipo:</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="tipovehicle" value="1" ng-model="formData.carro"> Carro
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="tipovehicle" value="2" ng-model="formData.moto"> Moto
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="tipovehicle" value="3" ng-model="formData.otro"> Otro
-                                    </label>
-                                </div>
+                                <select class="form-control" name="tipovehicle" ng-model="formData.tipovehicle">
+                                    <option value="1" selected>Carro</option>
+                                    <option value="2">Moto</option>
+                                    <option value="3">Otro</option>
+                                </select>
                                 <p id="messageerror">
-                                    {{ errortype }}
+                                    {{ errortype}}
                                 </p>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-6">
                             <div class="form-group">
-                                <input type="submit" id="submit" name="submit" class="btn btn-success"/>
+                                <input type="submit" id="submit" name="submit" class="btn btn-info"/>
                             </div>
                         </div>  
                     </form>
                 </div>
-                <div class="panel-footer">
-                    ¿Estás registrado? Haz clic <a href="#/login">aquí</a>
-                </div>
+                <!--                <div class="panel-footer">
+                                    ¿Estás registrado? Haz clic <a href="#/login">aquí</a>
+                                </div>-->
             </div>
         </div>
     </div>

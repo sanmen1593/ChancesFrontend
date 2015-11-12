@@ -1,28 +1,28 @@
 <div class="container">
     <div class="row">
-        <div ng-repeat="chance in chances.chances" class="col-sm-4">
-            <div class="panel panel-default">
+        <div ng-repeat="chance in chances.chances" class="col-sm-6">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h2>De {{chance.departure}} a {{ chance.destination}}</h2>
+                    <h2 class="chances-title">De {{chance.departure}} A {{ chance.destination}}</h2>
                 </div>
                 <div class="panel-body">
                     <p>
-                        Fecha: {{ chance.date}}
+                        <i class="mdi-notification-event-note"> {{ chance.date}}</i>
                     </p>
                     <p>
-                        Precio: {{ chance.fee}}
+                        <i class="mdi-editor-attach-money"> {{ chance.fee}}</i>
                     </p>
                     <p>
-                        Hora: {{ chance.hour}}
+                        <i class="mdi-image-timer"> {{chance.hour}}</i>
                     </p>
                     <p>
-                        Cupos: {{ chance.capacity}}
+                        <i class="mdi-notification-drive-eta"> {{chance.capacity}}</i>
                     </p>
                     <p>
-                        Ruta: {{ chance.route | RouteFilter }}
+                        <i class="mdi-maps-directions"> {{ chance.route | RouteFilter }}</i>
                     </p>
-                    <p>
-                        Comentarios: {{chance.comments}}
+                    <p class="capitalize">
+                        <i class="mdi-notification-sms"> {{chance.comments}}</i>
                     </p>
                 </div>
                 <div class="panel-footer">

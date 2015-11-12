@@ -31,24 +31,29 @@
                 <div id="navcontainer" class="container-fluid">
                     <div id="row">
                         <div class="bs-example" data-example-id="navbar-link">
-                            <nav class="navbar navbar-default">
-                                <div class="container-fluid" ng-controller="SessionsController">
-                                    <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5">
-                                            <span class="sr-only">Toggle navigation</span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                            <span class="icon-bar"></span>
-                                        </button>
-                                        <p ng-hide="{{!logged()}}" class="navbar-text" ng-controller="UserController">
-                                            Signed in as: <a href="#/profile" class="navbar-link">{{ user.user.name}} {{user.user.lastname}}</a>
-                                        </p>
-                                    </div>
-                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-                                        <p class="navbar-right" ><button ng-hide="{{!logged()}}" ng-click='logout()' class="btn btn-success btn-raised">Logout </button></p>
-                                    </div>
+                            <div class="navbar navbar-default">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <p class="navbar-text" ng-hide="{{!logged()}}" ng-controller="SessionsController">
+                                        Signed in as: <a href="#/profile" ng-controller="UserController" ng-app=""class="navbar-link">{{ user.user.name}} {{user.user.lastname}}</a>
+                                    </p>
                                 </div>
-                            </nav>
+                                <div class="navbar-collapse collapse navbar-responsive-collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="dropdown">
+                                            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="javascript:void(0)">Action</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a ng-controller="SessionsController" ng-hide="{{!logged()}}" ng-click='logout()'>Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -57,9 +62,9 @@
                         <div class="col-xs-12 col-sm-5 col-sm-offset-2">
                             <h1><a href="#/myvehicles">ChanceUTB</a></h1>
                         </div>
-                        <div class="col-sm-5 hidden-xs">
-                            <a href="http://www.unitecnologica.edu.co"><img src="scripts/vendor/imgs/logo_utb.png" alt="Universidad Tecnologica de Bolivar" title="Universidad Tecnologica de Bolivar" /></a>
-                        </div>
+                        <!--                        <div class="col-sm-5 hidden-xs">
+                                                    <a href="http://www.unitecnologica.edu.co"><img src="scripts/vendor/imgs/logo_utb.png" alt="Universidad Tecnologica de Bolivar" title="Universidad Tecnologica de Bolivar" /></a>
+                                                </div>-->
                     </div>
                 </div>
             </div>

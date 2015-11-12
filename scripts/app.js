@@ -29,7 +29,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         if ($cookieStore.get('auth_token') != null && $location.path() == '/login') {
             $location.path('/myvehicles');
         }
-        if($cookieStore.get('auth_token') == null && ($location.path() != '/signup')){
+        if(($cookieStore.get('auth_token') == null || $cookieStore.get('auth_token') == 'undefined') && ($location.path() != '/signup')){
             $location.path('/login');
         }
     }]);
