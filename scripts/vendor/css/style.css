@@ -32,6 +32,15 @@ body {
     color: blue;
 }
 
+.logodiv{
+    text-align: center;
+}
+
+.logousb{
+    width: 90%;
+    text-align: center;
+}
+
 #messagerror{
     color: red;
     font-weight: bold;
@@ -43,4 +52,8 @@ body {
 
 .chances-title, .capitalize{
     text-transform: capitalize;
+}
+
+.panel-warning > .panel-heading, .navbar-warning.navbar, .panel-primary > .panel-heading{
+    background-color: #F19E3E !important;
 }

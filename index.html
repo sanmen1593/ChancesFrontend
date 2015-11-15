@@ -31,7 +31,7 @@
                 <div id="navcontainer" class="container-fluid">
                     <div id="row">
                         <div class="bs-example" data-example-id="navbar-link">
-                            <div class="navbar navbar-default">
+                            <div class="navbar navbar-warning">
                                 <div class="navbar-header">
                                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                                         <span class="icon-bar"></span>
@@ -45,9 +45,17 @@
                                 <div class="navbar-collapse collapse navbar-responsive-collapse">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
-                                            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Chances <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="javascript:void(0)">Action</a></li>
+                                                <li><a href="#/newchance">Agregar Aventon</a></li>
+                                                <li><a href="#/chances">Lista de Aventones</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Vehículos <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#/newvehicle">Agregar Vehículo</a></li>
+                                                <li><a href="#/myvehicles">Lista de Vehículos</a></li>
                                             </ul>
                                         </li>
                                         <li><a ng-controller="SessionsController" ng-hide="{{!logged()}}" ng-click='logout()'>Logout</a></li>
@@ -59,8 +67,8 @@
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-5 col-sm-offset-2">
-                            <h1><a href="#/myvehicles">ChanceUTB</a></h1>
+                        <div class="col-xs-12 col-sm-4 col-sm-offset-3 logodiv">
+                            <img class="logousb" src="scripts/vendor/imgs/logo_aventonusb.png" alt="Aventon USB" title="Aventon USB">
                         </div>
                         <!--                        <div class="col-sm-5 hidden-xs">
                                                     <a href="http://www.unitecnologica.edu.co"><img src="scripts/vendor/imgs/logo_utb.png" alt="Universidad Tecnologica de Bolivar" title="Universidad Tecnologica de Bolivar" /></a>
